@@ -21,11 +21,13 @@
     <table>
       <tr>
         <th>ABV</th>
-        <th>Calories</th>
+        <th>Calories <small>/ 12 oz.</small></th>
+        <th>Attenuation</th>
       </tr>
       <tr>
         <td>{{ abv }}%</td>
         <td>{{ calories }}</td>
+        <td>{{ real_attenuation }}%</td>
       </tr>
     </table>
   </div>
@@ -34,6 +36,7 @@
 <script>
 export default {
   name: 'app',
+
   data () {
     return {
       og_specific_gravity: 1.05,
@@ -42,6 +45,7 @@ export default {
       fn_temperature: 78
     }
   },
+
   computed: {
     og () {
       return this.correct_gravity(this.og_specific_gravity, this.og_temperature);
@@ -50,12 +54,16 @@ export default {
       return this.correct_gravity(this.fn_specific_gravity, this.fn_temperature);
     },
     abv () {
-      return this.round((76.08 * (this.og-this.fg) / (1.775-this.og)) * (this.fg / 0.794), 2);
+      return this.round((76.08 * (this.og - this.fg) / (1.775 - this.og)) * (this.fg / 0.794), 2);
     },
     calories () {
       return this.round(3621 * this.fg * (((0.8114 * this.fg) + (0.1886 * this.og) - 1) + (0.53 * ((this.og - this.fg) / (1.775 - this.og)))));
+    },
+    real_attenuation () {
+      return this.round(((this.og - 1) - (this.fg - 1)) / (this.og - 1) * 81.4, 1);
     }
   },
+
   methods: {
     correct_gravity (observed, temp) {
       let callibration_temp = 68;
@@ -69,28 +77,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
