@@ -1,4 +1,10 @@
+@import "mixins";
+@import "vars";
 @import "normalize";
+@import "layout";
+@import "type";
+@import "form";
 
-body {
+hr {
+  border-color: $border-color;
 }

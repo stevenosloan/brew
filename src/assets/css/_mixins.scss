@@ -1,0 +1,89 @@
+
+@mixin grid( $span, $columns ) {
+  width: percentage( $span / $columns);
+}
+
+$create-grid-list: ();
+@mixin create-grid( $columns ) {
+  $idx: $columns;
+
+  // special case to generate span1of1
+  @if $columns == 1 {
+    $idx: 2;
+  }
+
+  @while $idx > 1 {
+
+    // decriment the idx first to prevent generating span2of2, etc
+    $idx: $idx - 1;
+
+    @if not index( $create-grid-list, "#{$idx}of#{$columns}" ) {
+      $create-grid-list: append( $create-grid-list, "#{$idx}of#{$columns}" ) !global;
+
+      %span#{$idx}of#{$columns} {
+        @include grid($idx,$columns);
+      }
+    }
+
+    .span#{$idx}of#{$columns} {
+      @extend %span#{$idx}of#{$columns};
+    }
+  }
+}
+
+@mixin create_margins( $tiers, $base ) {
+  $idx: $tiers;
+  @while $idx >= 0 {
+    .mt#{$idx},
+    %mt#{$idx} {
+      margin-top: $base * $idx !important;
+    }
+    .mb#{$idx},
+    %mb#{$idx} {
+      margin-bottom: $base * $idx !important;
+    }
+    .mtb#{$idx},
+    %mb#{$idx} {
+      margin-top: $base * $idx;
+      margin-bottom: $base * $idx !important;
+    }
+    $idx: $idx - 1;
+  }
+}
+
+@mixin create_padding( $tiers, $base ) {
+  $idx: $tiers;
+  @while $idx >= 0 {
+    .pt#{$idx},
+    %pt#{$idx} {
+      padding-top: $base * $idx !important;
+    }
+    .pb#{$idx},
+    %pb#{$idx} {
+      padding-bottom: $base * $idx !important;
+    }
+    .ptb#{$idx},
+    %ptb#{$idx} {
+      padding-top: $base * $idx !important;
+      padding-bottom: $base * $idx !important;
+    }
+    .pr#{$idx},
+    %pr#{$idx} {
+      padding-right: $base * $idx !important;
+    }
+    .pl#{$idx},
+    %pl#{$idx} {
+      padding-left: $base * $idx !important;
+    }
+    .prl#{$idx},
+    %prl#{$idx} {
+      padding-left: $base * $idx !important;
+      padding-right: $base * $idx !important;
+    }
+    .pa#{$idx},
+    %pa#{$idx} {
+      padding: $base * $idx !important;
+    }
+    $idx: $idx - 1;
+  }
+}

@@ -1,35 +1,39 @@
 <template>
   <div id="app">
-    <form>
-      <label>Original Specific Gravity</label>
-      <input type="number" step="0.001" v-model.number="og_specific_gravity" />
+    <form class="col span1of1 pt3">
+      <fieldset class="ptb3 form-fieldset mb3">
+        <label class="body mt0 mb1">Original Specific Gravity</label>
+        <input class="form-input mb3" type="number" step="0.001" v-model.number="og_specific_gravity" />
 
-      <label>Original Temperature</label>
-      <input type="number" v-model.number="og_temperature" />
+        <label class="body mt0 mb1">Original Temperature</label>
+        <input class="form-input" type="number" v-model.number="og_temperature" />
+      </fieldset>
 
-      <hr/>
+      <fieldset class="ptb3 form-fieldset">
+        <label class="body mt0 mb1">Final Specific Gravity</label>
+        <input class="form-input mb3" type="number" step="0.001"  v-model.number="fn_specific_gravity" />
 
-      <label>Final Specific Gravity</label>
-      <input type="number" step="0.001"  v-model.number="fn_specific_gravity" />
-
-      <label>Final Temperature</label>
-      <input type="number" v-model.number="fn_temperature" />
+        <label class="body mt0 mb1">Final Temperature</label>
+        <input class="form-input" type="number" v-model.number="fn_temperature" />
+      </fieldset>
     </form>
 
-    <hr/>
+    <hr class="mtb3" />
 
-    <table>
-      <tr>
-        <th>ABV</th>
-        <th>Calories <small>/ 12 oz.</small></th>
-        <th>Attenuation</th>
-      </tr>
-      <tr>
-        <td>{{ abv }}%</td>
-        <td>{{ calories }}</td>
-        <td>{{ real_attenuation }}%</td>
-      </tr>
-    </table>
+    <div class="col span1of1 pb3">
+      <h2 class="heading center">Results</h2>
+
+      <dl class="dl">
+        <dt class="subheading">ABV</dt>
+        <dd class="body mb3">{{ abv }}%</dd>
+
+        <dt class="subheading">Estimated Calories <small class="small">/ 12 oz.</small></dt>
+        <dd class="body mb3">{{ calories }}</dd>
+
+        <dt class="subheading">Real Attenuation</dt>
+        <dd class="body">{{ real_attenuation }}</dd>
+      </dl>
+    </div>
   </div>
 </template>
 

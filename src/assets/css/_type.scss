@@ -1,0 +1,61 @@
+body {
+  font-family: $monospace;
+  font-size: $body-size;
+  line-height: $body-line;
+}
+
+a {
+  background: transparent;
+  text-decoration: none;
+  color: $pop;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: $title-size;
+  line-height: $title-line;
+  font-family: $title-font;
+  font-weight: $title-weight;
+  letter-spacing: $title-letter-spacing;
+}
+
+.heading {
+  font-size: $heading-size;
+  line-height: $heading-line;
+  font-family: $heading-font;
+  font-weight: $heading-weight;
+  letter-spacing: $heading-letter-spacing;
+}
+
+.subheading {
+  font-size: $subheading-size;
+  line-height: $subheading-line;
+  font-family: $subheading-font;
+  font-weight: $subheading-weight;
+  letter-spacing: $subheading-letter-spacing;
+}
+
+.body {
+  font-size: $body-size;
+  line-height: $body-line;
+  font-family: $body-font;
+  font-weight: $body-weight;
+  letter-spacing: $body-letter-spacing;
+}
+
+.small {
+  font-size: $small-size;
+  line-height: $small-line;
+  font-family: $small-font;
+  font-weight: $small-weight;
+  letter-spacing: $small-letter-spacing;
+}
+
+.dl {
+  dd {
+    margin-left: 0;
+  }
+}

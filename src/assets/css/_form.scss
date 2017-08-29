@@ -1,0 +1,32 @@
+.form-fieldset {
+  border: 1px solid $border-color;
+  padding: $gutter;
+  border-radius: $radius;
+}
+
+.form-input {
+  background: $white;
+  width: percentage(1);
+  border-radius: $radius;
+  box-sizing: border-box;
+  font-family: $body-font;
+  font-size: $body-size;
+  line-height: $body-line;
+  outline: 0;
+
+  height: $body-line*$body-size*2;
+  padding: 0 $gutter;
+
+  transition: border-color 0.2s linear;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $border-color;
+
+  &:hover {
+    border-color: mix($dark, $plum);
+  }
+
+  &:focus {
+    border-color: $plum;
+  }
+}

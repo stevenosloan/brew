@@ -1,0 +1,49 @@
+// Colors
+$white: #fff;
+$light: #eeeeee;
+$dark: #0f0f0f;
+$black: #000;
+
+$plum: #59569d;
+$pop: #f25292;
+$peach: #fea096;
+
+$border-color: #dcdcdc;
+
+// Units
+$radius:   4px !default;
+$baseline: 6px !default;
+$gutter:   $baseline * 3 !default;
+
+// Typography
+$monospace: Consolas, Monaco, Menlo, 'Courier New', monospace;
+
+$title-size: 40px !default;
+$title-line: (48/40) !default;
+$title-font: $monospace !default;
+$title-weight: bold !default;
+$title-letter-spacing: 0 !default;
+
+$heading-size: 26px !default;
+$heading-line: (36/26) !default;
+$heading-font: $monospace !default;
+$heading-weight: bold !default;
+$heading-letter-spacing: 0 !default;
+
+$subheading-size: 18px !default;
+$subheading-line: (27/18) !default;
+$subheading-font: $monospace !default;
+$subheading-weight: bold !default;
+$subheading-letter-spacing: 0 !default;
+
+$body-size: 16px !default;
+$body-line: (27/16) !default;
+$body-font: $monospace !default;
+$body-weight: normal !default;
+$body-letter-spacing: 0 !default;
+
+$small-size: 12px !default;
+$small-line: (21/12) !default;
+$small-font: $monospace !default;
+$small-weight: normal !default;
+$small-letter-spacing: 0 !default;

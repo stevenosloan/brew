@@ -1,0 +1,39 @@
+@include create_grid(1);
+@include create_grid(2);
+@include create_grid(3);
+@include create_grid(4);
+@include create_margins(16, $baseline);
+@include create_padding(16, $baseline);
+
+.section {
+  display: block;
+  clear: both;
+  vertical-align: top;
+}
+
+.block {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  float: none;
+}
+
+.col {
+  @extend .block;
+  vertical-align: inherit;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  max-width: 100%;
+}
+
+.center {
+  text-align: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
