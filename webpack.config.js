@@ -4,6 +4,10 @@ var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
+var ExtractSass = new ExtractTextPlugin({
+  filename: "[name].[contenthash].css",
+  disable: process.env.NODE_ENV === "development"
+});
 
 module.exports = {
   entry: "./src/main.js",
@@ -12,6 +16,7 @@ module.exports = {
     filename: "index.js"
   },
   plugins: [
+    ExtractSass,
     new HtmlWebpackPlugin({
       title: "Brew",
       template: "src/layout/layout.ejs",
@@ -38,6 +43,26 @@ module.exports = {
         test: /\.js$/,
         loader: "babel-loader",
         exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractSass.extract({
+          use: [
+            {
+              loader: "css-loader"
+            },
+            {
+              loader: "sass-loader",
+              options: {
+                  includePaths: [
+                    "src/assets/css"
+                  ]
+              }
+            }
+          ],
+          // use style-loader in development
+          fallback: "style-loader"
+        })
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
