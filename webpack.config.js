@@ -52,11 +52,12 @@ module.exports = {
               loader: "css-loader"
             },
             {
+              loader: "postcss-loader"
+            },
+            {
               loader: "sass-loader",
               options: {
-                  includePaths: [
-                    "src/assets/css"
-                  ]
+                includePaths: ["src/assets/css"]
               }
             }
           ],
