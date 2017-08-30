@@ -23,9 +23,18 @@ module.exports = {
       name: "Brew",
       short_name: "Brew",
       description: "Little tools to help brew",
-      background_color: '#eeeeee',
+      background_color: "#eeeeee",
+      theme_color: "#59569d",
       orientation: "portrait",
-      display: "standalone"
+      display: "standalone",
+      icons: [
+        {
+          src: path.resolve('src/assets/img/icon.png'),
+          sizes: [192],
+          destination: path.join("assets", "img"),
+          ios: true
+        }
+      ]
     }),
     new HtmlWebpackPlugin({
       title: "Brew",
