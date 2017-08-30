@@ -1,6 +1,6 @@
 <template>
   <div :class="status_class">
-    {{ status }}
+    {{ status }}: {{ $store.state.message }}
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
 
   data () {
     return {
-      status: "unkown"
+      status: "unknown"
     }
   },
 
@@ -33,7 +33,10 @@ export default {
 
   methods: {
     updateStatus () {
+      let previous = this.status;
       this.status = window.navigator.onLine ? "online" : "offline";
+
+      this.$store.dispatch("updateMessage", `status changed from ${previous} to ${this.status}`);
     }
   },
 

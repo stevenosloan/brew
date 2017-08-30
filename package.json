@@ -11,7 +11,9 @@
     "deploy": "cross-env gh-pages --dist dist"
   },
   "dependencies": {
-    "vue": "^2.3.3"
+    "pouchdb": "^6.3.4",
+    "vue": "^2.3.3",
+    "vuex": "^2.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
