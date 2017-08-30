@@ -1,0 +1,17 @@
+{
+  "icons": [
+    {
+      "src": "assets/img/icon_192x192.0774c67fa9cf7ba5ec29faf4ee7ccf07.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Brew",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "short_name": "Brew",
+  "description": "Little tools to help brew",
+  "background_color": "#eeeeee",
+  "theme_color": "#59569d"
+}

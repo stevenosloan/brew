@@ -1,9 +1,0 @@
-{
-  "name": "Brew",
-  "orientation": "portrait",
-  "display": "standalone",
-  "start_url": ".",
-  "short_name": "Brew",
-  "description": "Little tools to help brew",
-  "background_color": "#eeeeee"
-}
