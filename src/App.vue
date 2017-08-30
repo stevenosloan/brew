@@ -6,7 +6,7 @@
         <input class="form-input mb3" type="number" step="0.001" v-model.number="og_specific_gravity" />
 
         <label class="body mt0 mb1">Original Temperature</label>
-        <input class="form-input" type="number" v-model.number="og_temperature" />
+        <input class="form-input" pattern="\d*" type="number" v-model.number="og_temperature" />
       </fieldset>
 
       <fieldset class="ptb3 form-fieldset">
@@ -14,7 +14,7 @@
         <input class="form-input mb3" type="number" step="0.001"  v-model.number="fn_specific_gravity" />
 
         <label class="body mt0 mb1">Final Temperature</label>
-        <input class="form-input" type="number" v-model.number="fn_temperature" />
+        <input class="form-input" pattern="\d*" type="number" v-model.number="fn_temperature" />
       </fieldset>
     </form>
 

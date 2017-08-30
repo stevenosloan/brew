@@ -4,8 +4,9 @@ var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
+var OfflinePlugin = require("offline-plugin");
 var ExtractSass = new ExtractTextPlugin({
-  filename: "[name].[contenthash].css",
+  filename: "[name]-[contenthash].css",
   disable: process.env.NODE_ENV === "development"
 });
 
@@ -13,7 +14,7 @@ module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "index.js"
+    filename: "[name]-[hash].js"
   },
   plugins: [
     ExtractSass,
@@ -25,7 +26,25 @@ module.exports = {
       xhtml: true,
       alwaysWriteToDisk: true
     }),
-    new HtmlWebpackHarddiskPlugin()
+    new HtmlWebpackHarddiskPlugin(),
+    new OfflinePlugin({
+      publicPath: '/',
+      caches: {
+        main: [
+          'main-*.css',
+          'main-*.js',
+        ],
+        additional: [
+          ':externals:'
+        ],
+        optional: [
+          ':rest:'
+        ]
+      },
+      ServiceWorker: {
+        navigateFallbackURL: "/"
+      }
+    })
   ],
   module: {
     rules: [
@@ -69,7 +88,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: "file-loader",
         options: {
-          name: "[name].[ext]?[hash]"
+          name: "[name]-[hash].[ext]"
         }
       }
     ]
