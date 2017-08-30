@@ -27,6 +27,10 @@ module.exports = {
       theme_color: "#59569d",
       orientation: "portrait",
       display: "standalone",
+      ios: {
+        "apple-mobile-web-app-capable": "yes"
+      },
+      inject: true,
       icons: [
         {
           src: path.resolve('src/assets/img/icon.png'),
@@ -49,14 +53,14 @@ module.exports = {
       relativePaths: true,
       caches: {
         main: [
-          'main-*.css',
-          'main-*.js',
+          "*.css",
+          "*.js",
         ],
         additional: [
-          ':externals:'
+          ":externals:"
         ],
         optional: [
-          ':rest:'
+          ":rest:"
         ]
       },
       ServiceWorker: {
