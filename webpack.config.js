@@ -5,6 +5,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 var OfflinePlugin = require("offline-plugin");
+var WebpackPwaManifest = require('webpack-pwa-manifest');
 var ExtractSass = new ExtractTextPlugin({
   filename: "[name]-[contenthash].css",
   disable: process.env.NODE_ENV === "development"
@@ -18,6 +19,14 @@ module.exports = {
   },
   plugins: [
     ExtractSass,
+    new WebpackPwaManifest({
+      name: "Brew",
+      short_name: "Brew",
+      description: "Little tools to help brew",
+      background_color: '#eeeeee',
+      orientation: "portrait",
+      display: "standalone"
+    }),
     new HtmlWebpackPlugin({
       title: "Brew",
       template: "src/layout/layout.ejs",
