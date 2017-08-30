@@ -28,7 +28,7 @@ module.exports = {
     }),
     new HtmlWebpackHarddiskPlugin(),
     new OfflinePlugin({
-      publicPath: '/',
+      relativePaths: true,
       caches: {
         main: [
           'main-*.css',
