@@ -51,20 +51,9 @@ module.exports = {
     new HtmlWebpackHarddiskPlugin(),
     new OfflinePlugin({
       relativePaths: true,
-      caches: {
-        main: [
-          "*.css",
-          "*.js",
-        ],
-        additional: [
-          ":externals:"
-        ],
-        optional: [
-          ":rest:"
-        ]
-      },
       ServiceWorker: {
-        navigateFallbackURL: "/"
+        navigateFallbackURL: "/",
+        events: true
       }
     })
   ],

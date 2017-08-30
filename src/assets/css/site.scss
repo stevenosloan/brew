@@ -8,3 +8,26 @@
 hr {
   border-color: $border-color;
 }
+
+.status {
+  margin: $gutter;
+  padding: $gutter;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+
+  &.status-online {
+    border: 1px solid $plum;
+    color: $plum;
+  }
+
+  &.status-offline {
+    border: 1px solid $peach;
+    color: $peach;
+  }
+
+  &.status-unkown,
+  &.status-updating {
+    border: 2px solid $pop;
+    color: $pop;
+  }
+}

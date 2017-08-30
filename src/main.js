@@ -1,12 +1,15 @@
 import Vue from "vue";
 import App from "./App.vue";
-import * as OfflinePluginRuntime from "offline-plugin/runtime";
+import Status from "./Status.vue"
 
 require("./assets/css/site.scss");
-
-OfflinePluginRuntime.install();
 
 new Vue({
   el: "#app",
   render: h => h(App)
+});
+
+new Vue({
+  el: "#status",
+  render: h => h(Status)
 });
