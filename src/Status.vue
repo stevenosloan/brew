@@ -1,6 +1,6 @@
 <template>
   <div :class="status_class">
-    {{ status }}: {{ $store.state.message }}
+    {{ status }}: <span v-if="!$pouch.loading.brewdb">{{ message.text }}</span>
   </div>
 </template>
 
@@ -34,13 +34,38 @@ export default {
   methods: {
     updateStatus () {
       let previous = this.status;
-      this.status = window.navigator.onLine ? "online" : "offline";
+      let new_status = window.navigator.onLine ? "online" : "offline";
+      this.status = new_status;
 
-      this.$store.dispatch("updateMessage", `status changed from ${previous} to ${this.status}`);
+      let message = this.message;
+      console.log('message', message);
+
+      if (message !== null) {
+        message.text = `status changed from ${previous} to ${new_status}`
+
+        this.$pouch.put("brewdb", message, {})
+            .then((data) => { console.log(data) })
+            .catch((err) => { console.log(err) });
+      }
+    }
+  },
+
+  pouch: {
+    message () {
+      return {
+        database: "brewdb",
+        selector: {_id: "message"},
+        first: true
+      }
     }
   },
 
   created () {
+    this.$pouch.sync("brewdb", "http://localhost:5984/brewdb");
+
+    console.log(this.$pouch);
+    console.log(this);
+
     OfflinePluginRuntime.install({
       onUpdating: () => {
         this.status = "updating";

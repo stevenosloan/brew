@@ -13,7 +13,7 @@
   "dependencies": {
     "pouchdb": "^6.3.4",
     "vue": "^2.3.3",
-    "vuex": "^2.4.0"
+    "vue-pouch": "0.0.22"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

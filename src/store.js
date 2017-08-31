@@ -1,30 +1,11 @@
 import Vue from "vue";
-import Vuex from "vuex";
+import PouchDB from "pouchdb";
 
-Vue.use(Vuex)
+PouchDB.plugin(require('pouchdb-find'));
+PouchDB.plugin(require('pouchdb-live-find'));
+PouchDB.debug.disable();
 
-const state = {
-  message: "hello"
-};
-
-const mutations = {
-  updateMessage (state, msg) {
-    state.message = msg;
-  }
-}
-
-const actions = {
-  updateMessage (mut, msg) {
-    mut.commit("updateMessage", msg);
-  }
-}
-
-const getters = {
-}
-
-export default new Vuex.Store({
-  state,
-  getters,
-  actions,
-  mutations
-})
+Vue.use(require('vue-pouch'), {
+  pouch: PouchDB,
+  defaultDB: new PouchDB("brewdb")
+});
