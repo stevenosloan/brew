@@ -9,6 +9,31 @@ hr {
   border-color: $border-color;
 }
 
+.tab {
+  &.tab-active {
+    display: block;
+  }
+
+  &.tab-hidden {
+    display: none;
+  }
+}
+
+.tab-nav {
+  padding: $baseline $gutter;
+
+  a {
+    display: inline-block;
+    padding: $baseline $gutter;
+    border: 1px solid $pop;
+
+    &.active {
+      background: $pop;
+      color: $white;
+    }
+  }
+}
+
 .status {
   margin: $gutter;
   padding: $gutter;

@@ -11,7 +11,7 @@
   box-sizing: border-box;
   font-family: $body-font;
   font-size: $body-size;
-  line-height: $body-line;
+  line-height: $body-line*$body-size*2;
   outline: 0;
 
   height: $body-line*$body-size*2;
